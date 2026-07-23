@@ -1,0 +1,41 @@
+name: appforro
+description: "A new Flutter project."
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.1
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_native_splash: ^2.4.8
+  cupertino_icons: ^1.0.8
+  youtube_player_iframe: ^6.0.2
+  google_fonts: ^8.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^6.0.0
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/boneco.jpg
+  
+   
+flutter_native_splash:
+  color: "#ff5c00"
+  image: assets/images/logo.jpg
+  android_12:
+    color: "#ff5c00"
+    icon_background_color: "#ff5c00"
+    image: assets/images/logo_1152.jpg
+  

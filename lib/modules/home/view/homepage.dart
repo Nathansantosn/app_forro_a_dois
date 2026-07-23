@@ -1,0 +1,109 @@
+import 'package:appforro/shared/theme/app_text_styles.dart';
+import 'package:appforro/shared/theme/applogo.dart';
+import 'package:appforro/shared/widgets/custon_button.dart';
+import 'package:flutter/material.dart';
+
+class HomePege extends StatelessWidget {
+  const HomePege({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xFFFF5C00),
+      appBar: AppBar(
+        backgroundColor: Color(0xFFFF5C00),
+        centerTitle: true,
+        title: Applogo(),
+      ),
+      body: SafeArea(
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: MediaQuery.of(context).size.height * .80,
+            width: MediaQuery.of(context).size.height * .40,
+            margin: const EdgeInsets.only(bottom: 15),
+
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(45),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text("Bem-vindo", style: AppTextStyles.title(fontSize: 35)),
+                    const SizedBox(height: 10),
+                    Text(
+                      "Escolha sua posição",
+                      style: AppTextStyles.subtitle(fontSize: 15),
+                    ),
+
+                    const SizedBox(height: 40),
+                    Container(
+                      height: 220,
+                      width: 220,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(blurRadius: 15, offset: const Offset(0, 5)),
+                        ],
+                      ),
+                      child: ClipOval(
+                        child: Image.asset(
+                          'assets/images/boneco.jpg',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 50),
+                    CustonButton(
+                      text: 'Passos',
+                      borda: const BorderSide(
+                        color: Color(0xFFFF5C00),
+                        width: 2,
+                      ),
+                      textColor: Color(0xFFFFFFFF),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/graduationdancedriven');
+                      },
+                      color: Color(0xFFFF5C00),
+                    ),
+                    const SizedBox(height: 20),
+                    CustonButton(
+                      borda: const BorderSide(
+                        color: Color(0xFFFF5C00),
+                        width: 2,
+                      ),
+                      text: 'Sabatinas',
+                      textColor: Color(0xFF000000),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/graduationhearing');
+                      },
+                      color: Color(0xFFFFFFFF),
+                    ),
+                    const SizedBox(height: 20),
+                    CustonButton(
+                      borda: const BorderSide(
+                        color: Color(0xFFFF5C00),
+                        width: 2,
+                      ),
+                      text: 'Teoria',
+                      textColor: Color(0xFFFF5C00),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/theorypage');
+                      },
+                      color: Color(0xFF000000),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+//
