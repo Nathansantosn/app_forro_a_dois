@@ -1,3 +1,4 @@
+import 'package:appforro/modules/danceStep/controller/controllershowvideo.dart';
 import 'package:appforro/shared/theme/app_text_styles.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:flutter/material.dart';
@@ -22,15 +23,17 @@ class Showvideopage extends StatefulWidget {
 }
 
 class _DanceShowVideoPageState extends State<Showvideopage> {
-  final controller = YoutubePlayerController.fromVideoId(
-    videoId: '1c27y9-MXHs',
-    autoPlay: false,
-    params: const YoutubePlayerParams(showFullscreenButton: true),
-  );
+  final controller = ShowVideoController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller.init(widget.youtubeID);
+  }
 
   @override
   void dispose() {
-    controller.close();
     super.dispose();
   }
 
@@ -52,7 +55,7 @@ class _DanceShowVideoPageState extends State<Showvideopage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: YoutubePlayerScaffold(
-            controller: controller,
+            controller: controller.youtubeController,
             aspectRatio: 16 / 9,
             builder: (context, player) {
               return Column(
