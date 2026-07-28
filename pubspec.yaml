@@ -16,6 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   youtube_player_iframe: ^6.0.2
   google_fonts: ^8.1.0
+  carousel_slider: ^5.1.2
 
 dev_dependencies:
   flutter_test:
@@ -31,6 +32,8 @@ flutter:
     - assets/images/boneco.jpg
     - assets/images/logo_1152.jpg
     - assets/images/logo.jpg
+    - assets/images/professor.jpg
+    - assets/images/professora.jpg
   
    
 flutter_native_splash:
