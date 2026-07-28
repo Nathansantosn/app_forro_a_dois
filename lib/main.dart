@@ -1,6 +1,7 @@
 import 'package:appforro/modules/danceStep/view/graduation/graduationdance.dart';
 import 'package:appforro/modules/hearing/view/graduation/graduationhearing.dart';
 import 'package:appforro/modules/home/view/homepage.dart';
+import 'package:appforro/modules/splash/splashpage.dart';
 import 'package:appforro/modules/theory/view/theorypage.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Forró a Dois',
-      initialRoute: '/home',
+      initialRoute: '/splash',
       routes: {
+        '/splash': (_) => SplashPage(),
         '/home': (_) => HomePege(),
         '/graduationdancedriven': (context) => GraduationDance(),
         '/graduationhearing': (context) => Graduationhearing(),

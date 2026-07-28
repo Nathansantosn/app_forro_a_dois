@@ -29,6 +29,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/boneco.jpg
+    - assets/images/logo_1152.jpg
+    - assets/images/logo.jpg
   
    
 flutter_native_splash:

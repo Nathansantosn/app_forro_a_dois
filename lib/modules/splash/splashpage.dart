@@ -1,3 +1,4 @@
+import 'package:appforro/shared/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -19,7 +20,7 @@ class _SplashPageState extends State<SplashPage>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 4),
+      duration: const Duration(seconds: 2),
     );
 
     _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(_controller);
@@ -31,8 +32,8 @@ class _SplashPageState extends State<SplashPage>
     _controller.forward();
 
     Future.delayed(
-      const Duration(seconds: 8),
-    ).then((_) => Navigator.of(context).pushReplacementNamed('/login'));
+      const Duration(seconds: 4),
+    ).then((_) => Navigator.of(context).pushReplacementNamed('/home'));
   }
 
   @override
@@ -44,26 +45,30 @@ class _SplashPageState extends State<SplashPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEF233C),
+      backgroundColor: const Color(0xFFFF5C00),
       body: Center(
-        child: Center(
-          child: FadeTransition(
-            opacity: _fadeAnimation,
-            child: ScaleTransition(
-              scale: _scaleAnimation,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'O CINEMA QUE VOCÊ AMA',
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: 9,
-                      fontWeight: FontWeight.w300,
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: ScaleTransition(
+            scale: _scaleAnimation,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: ClipOval(
+                    child: Image.asset(
+                      'assets/images/boneco.jpg',
+                      fit: BoxFit.cover,
+                      width: 200,
                     ),
                   ),
-                ],
-              ),
+                ),
+                SizedBox(height: 20),
+                Text(
+                  'Ensinamos Forró para todos',
+                  style: AppTextStyles.title(fontSize: 30),
+                ),
+              ],
             ),
           ),
         ),
