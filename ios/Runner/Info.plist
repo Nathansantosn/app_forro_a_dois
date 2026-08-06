@@ -6,6 +6,10 @@
 		<true/>
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
+		<key>LSApplicationQueriesSchemes</key>
+<array>
+	<string>spotify</string>
+</array>
 		<key>CFBundleDisplayName</key>
 		<string>Appforro</string>
 		<key>CFBundleExecutable</key>

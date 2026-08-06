@@ -1,6 +1,8 @@
 import 'package:appforro/shared/theme/app_text_styles.dart';
 import 'package:appforro/shared/theme/applogo.dart';
+import 'package:appforro/shared/widgets/carousel_item.dart';
 import 'package:appforro/shared/widgets/custon_button.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class HomePege extends StatelessWidget {
@@ -33,12 +35,6 @@ class HomePege extends StatelessWidget {
                 child: Column(
                   children: [
                     Text("Bem-vindo", style: AppTextStyles.title(fontSize: 35)),
-                    const SizedBox(height: 10),
-                    Text(
-                      "Escolha sua posição",
-                      style: AppTextStyles.subtitle(fontSize: 15),
-                    ),
-
                     const SizedBox(height: 40),
                     Container(
                       height: 220,
@@ -94,6 +90,48 @@ class HomePege extends StatelessWidget {
                         Navigator.pushNamed(context, '/theorypage');
                       },
                       color: Color(0xFF000000),
+                    ),
+                    const SizedBox(height: 20),
+                    CustonButton(
+                      text: 'Playlist',
+                      borda: const BorderSide(
+                        color: Color(0xFFFF5C00),
+                        width: 2,
+                      ),
+                      textColor: Color(0xFFFFFFFF),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/graduationplaylist');
+                      },
+                      color: Color(0xFFFF5C00),
+                    ),
+                    const SizedBox(height: 40),
+
+                    Text(
+                      "Professores",
+                      style: AppTextStyles.title(fontSize: 20),
+                    ),
+                    CarouselSlider(
+                      items: [
+                        Carouselitem(
+                          imagePath: 'professor.jpg',
+                          text: 'Tio tico',
+                        ),
+                        Carouselitem(
+                          imagePath: 'professora.jpg',
+                          text: 'Tia paulinha',
+                        ),
+                      ],
+                      options: CarouselOptions(
+                        height: 200,
+                        aspectRatio: 1,
+                        viewportFraction: 1,
+                        initialPage: 0,
+                        enableInfiniteScroll: true,
+                        autoPlay: true,
+                        autoPlayInterval: Duration(seconds: 5),
+                        autoPlayAnimationDuration: Duration(seconds: 1),
+                        autoPlayCurve: Curves.easeInBack,
+                      ),
                     ),
                   ],
                 ),

@@ -2,6 +2,7 @@ import 'package:appforro/modules/danceStep/view/graduation/graduationdance.dart'
 import 'package:appforro/modules/hearing/view/graduation/graduationhearing.dart';
 import 'package:appforro/modules/home/view/homepage.dart';
 import 'package:appforro/modules/login/view/loginpage.dart';
+import 'package:appforro/modules/playlist/view/graduationplaylist.dart';
 import 'package:appforro/modules/splash/splashpage.dart';
 import 'package:appforro/modules/theory/view/theorypage.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/graduationdancedriven': (context) => GraduationDance(),
         '/graduationhearing': (context) => Graduationhearing(),
         '/theorypage': (context) => Theorypage(),
+        '/graduationplaylist': (context) => Graduationplaylist(),
       },
     );
   }

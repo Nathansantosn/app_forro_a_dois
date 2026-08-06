@@ -19,14 +19,14 @@ final List<DanceStep> danceStepYellow = [
   DanceStep(
     legenda: '(BE - 1c3)',
     name: 'Esmeril swingado',
-    youtubeId: 'yz567',
+    youtubeId: 'qVbD-oOPvuM',
     description:
         'O "Esmeril swingado" combina balanço e giros rápidos. Mantenha os joelhos flexionados para dar leveza ao movimento enquanto balança para os lados no ritmo da música.',
   ),
   DanceStep(
     legenda: '(PG-POG /BE - 2c3)',
     name: 'Girado Enrolado',
-    youtubeId: 'abc890',
+    youtubeId: 'qVbD-oOPvuM',
     description:
         'No "Enrolado", os braços dos parceiros se entrelaçam suavemente em movimentos circulares. A execução requer atenção na postura para não perder o equilíbrio durante o desenrolar do movimento.',
   ),
@@ -34,35 +34,35 @@ final List<DanceStep> danceStepYellow = [
   DanceStep(
     legenda: '(BD-1C3)',
     name: 'Piões',
-    youtubeId: 'jkl789',
+    youtubeId: 'qVbD-oOPvuM',
     description:
         'O "Pião" é um giro completo onde o corpo deve permanecer alinhado. Utilize a base dos pés para girar de forma controlada e suave. e existem Pião Girado, Pião Girado inverso, Pião Rodado, Pião Rodado inverso',
   ),
   DanceStep(
     legenda: '(PG-POG /BE - 2c3)',
     name: 'Girado Gangorra',
-    youtubeId: 'mno012',
+    youtubeId: 'qVbD-oOPvuM',
     description:
         'A "Gangorra" envolve balanços para frente e para trás. A movimentação precisa ser fluida, imitando o movimento de um balanço.',
   ),
   DanceStep(
     legenda: '(BD - 1.2.3)',
     name: 'Esmeril tábua',
-    youtubeId: 'pqr345',
+    youtubeId: 'qVbD-oOPvuM',
     description:
         'O "Esmeril tábua" combina balanço do corpo. Mantenha os joelhos sepadatos com o do parceiro enquanto balança do corpo é sentido no braço com ele esticado sentindo o ritmo da música.',
   ),
   DanceStep(
     legenda: '(BE - 1c3)',
     name: 'Rodada',
-    youtubeId: 'stu678',
+    youtubeId: 'qVbD-oOPvuM',
     description:
         'A "Rodadinha" é um passo circular suave onde o parceiro conduz a parceira em um giro completo. Comece segurando as mãos em posição fechada e gire da direita para direita, mantendo os pés próximos ao solo para um movimento fluido e contínuo.',
   ),
   DanceStep(
     legenda: '(PG/BD-1c3)',
     name: 'Rodado',
-    youtubeId: 'stu678',
+    youtubeId: 'qVbD-oOPvuM',
     description:
         'A "Rodadinha" é um passo circular suave onde o parceiro conduz a parceira em um giro completo. Comece segurando as mãos em posição fechada e gire da esquieda para esquerda, mantendo os pés próximos ao solo para um movimento fluido e contínuo.',
   ),
