@@ -1,5 +1,5 @@
-import 'package:appforro/modules/danceStep/controller/graduationprogres.dart';
 import 'package:appforro/modules/danceStep/view/showVideo/showvideopage.dart';
+import 'package:appforro/modules/hearing/controller/hearingcontroller.dart';
 import 'package:appforro/modules/hearing/model/hearing.dart';
 import 'package:appforro/shared/theme/app_text_styles.dart';
 import 'package:appforro/shared/theme/applogo.dart';
@@ -22,6 +22,39 @@ class Heringpage extends StatefulWidget {
 }
 
 class _Heringpage extends State<Heringpage> {
+  late final HearingController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = HearingController(
+      hearings: widget.hearings,
+      color: widget.color,
+      onUpdate: widget.onUpdate,
+    );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  void _openVideo(Hearing hearing) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => Showvideopage(
+          legenda: hearing.legenda,
+          name: hearing.name,
+          description: hearing.description,
+          youtubeID: hearing.youtubeId,
+          color: widget.color,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,56 +71,79 @@ class _Heringpage extends State<Heringpage> {
           ],
         ),
       ),
-      body: ListView.separated(
-        itemCount: widget.hearings.length,
-        itemBuilder: (_, index) {
-          final hearing = widget.hearings[index];
-          return CheckboxListTile(
-            value: hearing.checked,
-            title: Text(hearing.name, style: AppTextStyles.title(fontSize: 15)),
-            onChanged: (bool? value) {
-              setState(() {
-                hearing.checked = value!;
-                if (value) {
-                  if (widget.color == Colors.yellow) {
-                    GraduationProgress.nivelYellow++;
-                  } else if (widget.color == Colors.blue) {
-                    GraduationProgress.nivelBlue++;
-                  } else if (widget.color == Colors.red) {
-                    GraduationProgress.nivelRed++;
-                  } else if (widget.color == Colors.orange) {
-                    GraduationProgress.nivelOrange++;
-                  }
-                } else {
-                  if (widget.color == Colors.yellow) {
-                    GraduationProgress.nivelYellow--;
-                  } else if (widget.color == Colors.blue) {
-                    GraduationProgress.nivelBlue--;
-                  } else if (widget.color == Colors.red) {
-                    GraduationProgress.nivelRed--;
-                  } else if (widget.color == Colors.orange) {
-                    GraduationProgress.nivelOrange--;
-                  }
-                }
-              });
-              widget.onUpdate(0);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => Showvideopage(
-                    legenda: hearing.legenda,
-                    name: hearing.name,
-                    description: hearing.description,
-                    youtubeID: hearing.youtubeId,
-                    color: widget.color,
+      body: ValueListenableBuilder<List<Hearing>>(
+        valueListenable: controller.hearingsNotifier,
+        builder: (context, hearings, _) {
+          return ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            itemCount: hearings.length,
+            itemBuilder: (_, index) {
+              final hearing = hearings[index];
+              final bool isChecked = hearing.checked;
+
+              return AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
+                decoration: BoxDecoration(
+                  color: isChecked
+                      ? widget.color.withOpacity(0.15)
+                      : Colors.grey.withOpacity(0.06),
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(
+                    color: isChecked
+                        ? widget.color
+                        : Colors.grey.withOpacity(0.3),
+                    width: isChecked ? 1.5 : 1,
+                  ),
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(14),
+                  child: Row(
+                    children: [
+                      Checkbox(
+                        value: isChecked,
+                        activeColor: widget.color,
+                        onChanged: (value) =>
+                            controller.toggleCheck(hearing, value),
+                      ),
+                      Expanded(
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(14),
+                          splashColor: widget.color.withOpacity(0.2),
+                          onTap: () => _openVideo(hearing),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 14),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    hearing.name,
+                                    style: AppTextStyles.title(fontSize: 15)
+                                        .copyWith(
+                                          decoration: isChecked
+                                              ? TextDecoration.lineThrough
+                                              : null,
+                                          color: isChecked ? Colors.grey : null,
+                                        ),
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.play_circle_outline,
+                                  color: widget.color,
+                                ),
+                                const SizedBox(width: 12),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               );
             },
+            separatorBuilder: (_, index) => const SizedBox(height: 10),
           );
-        },
-        separatorBuilder: (_, index) {
-          return const Padding(padding: EdgeInsets.all(8.0), child: Divider());
         },
       ),
     );

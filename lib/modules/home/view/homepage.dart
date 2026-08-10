@@ -105,7 +105,6 @@ class HomePege extends StatelessWidget {
                       color: Color(0xFFFF5C00),
                     ),
                     const SizedBox(height: 40),
-
                     Text(
                       "Professores",
                       style: AppTextStyles.title(fontSize: 20),
