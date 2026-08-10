@@ -1,8 +1,10 @@
+import 'package:appforro/modules/home/view/homepage.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/custon_button.dart';
 import 'package:appforro/shared/widgets/custonbuttontext.dart';
 import 'package:appforro/shared/widgets/custoninput.dart';
 import 'package:appforro/shared/widgets/custonlabel.dart';
+import 'package:appforro/shared/routes/route_transitions.dart';
 import 'package:flutter/material.dart';
 
 class Loginpage extends StatefulWidget {
@@ -93,10 +95,12 @@ class _LoginpageState extends State<Loginpage> {
                           ),
                           textColor: Color(0xFFFFFFFF),
                           onPressed: () {
-                            Navigator.pushNamedAndRemoveUntil(
-                              context,
-                              '/home',
-                              (route) => false,
+                            Navigator.of(context).pushReplacement(
+                              sliderRouteTransition(
+                                const HomePege(),
+                                duration: Duration(milliseconds: 2000),
+                                beginPosition: Offset(0, 1),
+                              ),
                             );
                           },
                           color: Color(0xFFFF5C00),

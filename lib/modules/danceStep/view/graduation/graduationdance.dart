@@ -1,7 +1,6 @@
-import 'package:appforro/modules/danceStep/controller/controllerprogresdance.dart';
-
 import 'package:appforro/modules/danceStep/model/graduationentity.dart';
 import 'package:appforro/modules/danceStep/view/pagedance/dancepage.dart';
+import 'package:appforro/modules/hearing/controller/controllerprogreshearing.dart';
 import 'package:appforro/shared/theme/app_text_styles.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/custon_button.dart';

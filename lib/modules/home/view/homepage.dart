@@ -1,3 +1,4 @@
+import 'package:appforro/shared/routes/approutes.dart';
 import 'package:appforro/shared/theme/app_text_styles.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/carousel_item.dart';
@@ -61,7 +62,9 @@ class HomePege extends StatelessWidget {
                       ),
                       textColor: Color(0xFFFFFFFF),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/graduationdancedriven');
+                        Navigator.of(
+                          context,
+                        ).pushReplacementNamed(AppRoutes.graduationHearing);
                       },
                       color: Color(0xFFFF5C00),
                     ),
@@ -74,7 +77,9 @@ class HomePege extends StatelessWidget {
                       text: 'Sabatinas',
                       textColor: Color(0xFF000000),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/graduationhearing');
+                        Navigator.of(
+                          context,
+                        ).pushReplacementNamed(AppRoutes.graduationDanceDriven);
                       },
                       color: Color(0xFFFFFFFF),
                     ),
@@ -87,7 +92,9 @@ class HomePege extends StatelessWidget {
                       text: 'Teoria',
                       textColor: Color(0xFFFF5C00),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/theorypage');
+                        Navigator.of(
+                          context,
+                        ).pushReplacementNamed(AppRoutes.graduationHearing);
                       },
                       color: Color(0xFF000000),
                     ),
@@ -100,7 +107,9 @@ class HomePege extends StatelessWidget {
                       ),
                       textColor: Color(0xFFFFFFFF),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/graduationplaylist');
+                        Navigator.of(
+                          context,
+                        ).pushReplacementNamed(AppRoutes.graduationPlaylist);
                       },
                       color: Color(0xFFFF5C00),
                     ),

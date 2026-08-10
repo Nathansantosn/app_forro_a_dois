@@ -1,4 +1,7 @@
+import 'package:appforro/modules/home/view/homepage.dart';
+import 'package:appforro/modules/login/view/loginpage.dart';
 import 'package:appforro/shared/theme/app_text_styles.dart';
+import 'package:appforro/shared/routes/route_transitions.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -31,9 +34,15 @@ class _SplashPageState extends State<SplashPage>
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
     _controller.forward();
 
-    Future.delayed(
-      const Duration(seconds: 4),
-    ).then((_) => Navigator.of(context).pushReplacementNamed('/Login'));
+    Future.delayed(const Duration(seconds: 4)).then(
+      (_) => Navigator.of(context).pushReplacement(
+        sliderRouteTransition(
+          const Loginpage(),
+          duration: Duration(milliseconds: 2000),
+          beginPosition: Offset(0, 1),
+        ),
+      ),
+    );
   }
 
   @override
