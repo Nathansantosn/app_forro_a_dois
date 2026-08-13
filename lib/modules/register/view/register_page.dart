@@ -156,6 +156,7 @@ class _RegisterpageState extends State<Registertropage> {
                                   _controller.selectedRole.value = role,
                               selectedColor: const Color(0xFFFF5C00),
                               backgroundColor: Colors.white10,
+
                               labelStyle: TextStyle(
                                 color: isSelected
                                     ? Colors.white

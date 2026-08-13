@@ -1,6 +1,6 @@
 import 'package:appforro/modules/home/view/homepage.dart';
 import 'package:appforro/modules/login/controller/login_controller.dart';
-import 'package:appforro/modules/login/controller/repository/login_repository_imp.dart';
+import 'package:appforro/modules/login/controller/repository/login_repository.dart';
 import 'package:appforro/modules/register/view/register_page.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/custon_button.dart';

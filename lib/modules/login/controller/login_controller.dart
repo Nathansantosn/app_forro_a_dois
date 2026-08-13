@@ -1,4 +1,6 @@
-import 'package:appforro/modules/login/controller/repository/ilogin_repository.dart';
+import 'package:appforro/modules/login/controller/repository/i_login_repository.dart';
+import 'package:appforro/modules/login/exxeption/login_exceptions.dart';
+import 'package:appforro/modules/login/model/user_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -9,6 +11,9 @@ class LoginController {
 
   final ValueNotifier<bool> isLoading = ValueNotifier(false);
   final ValueNotifier<String?> errorMessage = ValueNotifier(null);
+
+  UserModel? _currentUser;
+  UserModel? get currentUser => _currentUser;
 
   Future<bool> login({required String email, required String password}) async {
     errorMessage.value = null;
@@ -24,7 +29,10 @@ class LoginController {
 
     isLoading.value = true;
     try {
-      await _loginRepository.login(email: email.trim(), password: password);
+      _currentUser = await _loginRepository.login(
+        email: email.trim(),
+        password: password,
+      );
       return true;
     } catch (e) {
       errorMessage.value = _mapearErro(e);
@@ -35,6 +43,9 @@ class LoginController {
   }
 
   String _mapearErro(Object e) {
+    if (e is EnrollmentCancelledException) {
+      return e.message;
+    }
     if (e is AuthException) {
       if (e.message.contains('Invalid login credentials')) {
         return 'E-mail ou senha incorretos';

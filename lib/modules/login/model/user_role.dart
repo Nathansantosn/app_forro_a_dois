@@ -1,7 +1,6 @@
 enum UserRole {
   aluno,
   instrutor,
-  avaliador,
   professor;
 
   String get label {
@@ -10,8 +9,6 @@ enum UserRole {
         return 'Aluno';
       case UserRole.instrutor:
         return 'Instrutor';
-      case UserRole.avaliador:
-        return 'Avaliador';
       case UserRole.professor:
         return 'Professor';
     }
