@@ -1,4 +1,4 @@
-import 'package:appforro/shared/routes/approutes.dart';
+import 'package:appforro/core/routes/approutes.dart';
 import 'package:appforro/shared/theme/app_text_styles.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/carousel_item.dart';

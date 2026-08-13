@@ -1,7 +1,18 @@
-import 'package:appforro/shared/routes/approutes.dart';
+import 'package:appforro/core/routes/approutes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: ".env");
+
+  await Supabase.initialize(
+    url: dotenv.env["SUPABASE_URL"]!,
+    anonKey: dotenv.env["SUPABASE_API_KEY"]!,
+  );
+  debugPrint('SUPABASE_URL: "${dotenv.env['SUPABASE_URL']}"');
   runApp(const MyApp());
 }
 

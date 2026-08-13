@@ -1,7 +1,7 @@
 import 'package:appforro/modules/home/view/homepage.dart';
 import 'package:appforro/modules/login/view/loginpage.dart';
 import 'package:appforro/shared/theme/app_text_styles.dart';
-import 'package:appforro/shared/routes/route_transitions.dart';
+import 'package:appforro/core/routes/route_transitions.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
