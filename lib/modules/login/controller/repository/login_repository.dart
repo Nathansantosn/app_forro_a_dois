@@ -1,5 +1,6 @@
 import 'package:appforro/modules/login/controller/repository/i_login_repository.dart';
-import 'package:appforro/modules/login/exxeption/login_exceptions.dart';
+import 'package:appforro/modules/login/exeption/login_exceptions.dart';
+import 'package:appforro/modules/login/exeption/login_pending.dart';
 import 'package:appforro/modules/login/model/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -8,7 +9,7 @@ class LoginRepository implements ILoginRepository {
 
   final SupabaseClient _client;
 
-  static const _table = 'profile';
+  static const _table = 'profiles';
 
   @override
   Future<UserModel> login({
@@ -27,18 +28,28 @@ class LoginRepository implements ILoginRepository {
       );
     }
 
-    // Busca o perfil correspondente. Se o registro foi deletado
-    // OU está com status != 'active', maybeSingle() retorna null.
+    // Busca o perfil sem filtrar por status ainda, pra sabermos
+    // diferenciar "não existe" (deletado/cancelado) de "existe mas pendente".
     final profileMap = await _client
         .from(_table)
         .select()
         .eq('id', userId)
-        .eq('status', 'active')
         .maybeSingle();
 
     if (profileMap == null) {
-      // Perfil não existe mais (deletado) ou foi cancelado (soft delete).
-      // Derruba a sessão que o Supabase Auth acabou de criar.
+      // Registro não existe mais (deletado do banco).
+      await _client.auth.signOut();
+      throw const EnrollmentCancelledException();
+    }
+
+    final status = profileMap['status'] as String? ?? 'active';
+
+    if (status == 'pending') {
+      await _client.auth.signOut();
+      throw const PendingEnrollmentException();
+    }
+
+    if (status == 'cancelled') {
       await _client.auth.signOut();
       throw const EnrollmentCancelledException();
     }

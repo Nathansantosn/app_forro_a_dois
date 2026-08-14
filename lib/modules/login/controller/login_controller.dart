@@ -1,5 +1,6 @@
 import 'package:appforro/modules/login/controller/repository/i_login_repository.dart';
-import 'package:appforro/modules/login/exxeption/login_exceptions.dart';
+import 'package:appforro/modules/login/exeption/login_exceptions.dart';
+import 'package:appforro/modules/login/exeption/login_pending.dart';
 import 'package:appforro/modules/login/model/user_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -43,6 +44,9 @@ class LoginController {
   }
 
   String _mapearErro(Object e) {
+    if (e is PendingEnrollmentException) {
+      return e.message;
+    }
     if (e is EnrollmentCancelledException) {
       return e.message;
     }
@@ -52,7 +56,8 @@ class LoginController {
       }
       return e.message;
     }
-    return 'Erro ao fazer login. Tente novamente.';
+    print('Erro (${e.runtimeType}): $e');
+    return 'Erro (${e.runtimeType}): $e';
   }
 
   void dispose() {

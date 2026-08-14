@@ -1,4 +1,7 @@
 import 'package:appforro/core/routes/approutes.dart';
+import 'package:appforro/modules/approval/view/approval_page.dart';
+import 'package:appforro/modules/login/model/user_model.dart';
+import 'package:appforro/modules/login/model/user_role.dart';
 import 'package:appforro/shared/theme/app_text_styles.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/carousel_item.dart';
@@ -7,16 +10,32 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class HomePege extends StatelessWidget {
-  const HomePege({super.key});
+  const HomePege({super.key, this.currentUser});
+
+  final UserModel? currentUser;
 
   @override
   Widget build(BuildContext context) {
+    final isProfessor = currentUser?.role == UserRole.professor;
+
     return Scaffold(
       backgroundColor: Color(0xFFFF5C00),
       appBar: AppBar(
         backgroundColor: Color(0xFFFF5C00),
         centerTitle: true,
         title: Applogo(),
+        actions: [
+          if (isProfessor)
+            IconButton(
+              tooltip: 'Matrículas pendentes',
+              icon: const Icon(Icons.how_to_reg),
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (_) => const ApprovalPage()));
+              },
+            ),
+        ],
       ),
       body: SafeArea(
         child: Align(
@@ -64,7 +83,7 @@ class HomePege extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(
                           context,
-                        ).pushReplacementNamed(AppRoutes.graduationHearing);
+                        ).pushNamed(AppRoutes.graduationHearing);
                       },
                       color: Color(0xFFFF5C00),
                     ),
@@ -79,7 +98,7 @@ class HomePege extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(
                           context,
-                        ).pushReplacementNamed(AppRoutes.graduationDanceDriven);
+                        ).pushNamed(AppRoutes.graduationDanceDriven);
                       },
                       color: Color(0xFFFFFFFF),
                     ),
@@ -94,7 +113,7 @@ class HomePege extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(
                           context,
-                        ).pushReplacementNamed(AppRoutes.graduationHearing);
+                        ).pushNamed(AppRoutes.graduationHearing);
                       },
                       color: Color(0xFF000000),
                     ),
@@ -109,7 +128,7 @@ class HomePege extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(
                           context,
-                        ).pushReplacementNamed(AppRoutes.graduationPlaylist);
+                        ).pushNamed(AppRoutes.graduationPlaylist);
                       },
                       color: Color(0xFFFF5C00),
                     ),
@@ -151,5 +170,3 @@ class HomePege extends StatelessWidget {
     );
   }
 }
-
-//

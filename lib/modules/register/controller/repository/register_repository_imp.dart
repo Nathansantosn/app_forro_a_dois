@@ -33,7 +33,13 @@ class RegisterRepository implements IRegisterRepository {
       role: role,
     );
 
-    await _client.from(_profilesTable).insert(novoUsuario.toMap());
+    // Todo cadastro entra como 'pending'. Só passa a acessar o app
+    // depois que o professor confirmar a matrícula manualmente
+    // (via tela de aprovação ou direto no Supabase).
+    await _client.from(_profilesTable).insert({
+      ...novoUsuario.toMap(),
+      'status': 'pending',
+    });
 
     return novoUsuario;
   }
