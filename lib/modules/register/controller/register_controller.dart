@@ -1,4 +1,4 @@
-import 'package:appforro/modules/login/model/user_role.dart';
+import 'package:appforro/modules/register/model/user_role.dart';
 import 'package:appforro/modules/register/controller/repository/i_register_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

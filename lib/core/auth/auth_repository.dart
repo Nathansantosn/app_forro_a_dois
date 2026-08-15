@@ -1,4 +1,4 @@
-import 'package:appforro/modules/login/model/user_model.dart';
+import 'package:appforro/modules/register/model/user_model.dart';
 
 abstract class IAuthRepository {
   /// Usuário logado no momento (null se não houver sessão ativa)

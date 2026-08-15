@@ -1,6 +1,8 @@
 import 'package:appforro/modules/home/view/homepage.dart';
 import 'package:appforro/modules/login/controller/login_controller.dart';
 import 'package:appforro/modules/login/controller/repository/login_repository.dart';
+import 'package:appforro/modules/login/view/forgot_password_page.dart';
+import 'package:appforro/modules/reset/view/reset_password_page.dart';
 import 'package:appforro/modules/register/view/register_page.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/custon_button.dart';
@@ -46,7 +48,7 @@ class _LoginpageState extends State<Loginpage> {
     if (sucesso && mounted) {
       Navigator.of(context).pushReplacement(
         sliderRouteTransition(
-          const HomePege(),
+          HomePege(currentUser: _controller.currentUser),
           duration: const Duration(milliseconds: 2000),
           beginPosition: const Offset(0, 1),
         ),
@@ -121,7 +123,13 @@ class _LoginpageState extends State<Loginpage> {
                       alignment: Alignment.centerRight,
                       child: CustonButtonText(
                         text: 'Esqueceu a senha?',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const ForgotPasswordPage(),
+                            ),
+                          );
+                        },
                         color: Colors.white,
                       ),
                     ),

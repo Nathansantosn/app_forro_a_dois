@@ -7,9 +7,20 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>LSApplicationQueriesSchemes</key>
-<array>
-	<string>spotify</string>
-</array>
+		<array>
+			<string>spotify</string>
+		</array>
+		<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>appforro</string>
+				</array>
+				<key>CFBundleURLName</key>
+				<string>com.appforro.resetpassword</string>
+			</dict>
+		</array>
 		<key>CFBundleDisplayName</key>
 		<string>Appforro</string>
 		<key>CFBundleExecutable</key>

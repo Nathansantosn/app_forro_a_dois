@@ -1,4 +1,4 @@
-import 'package:appforro/modules/login/model/user_role.dart';
+import 'package:appforro/modules/register/model/user_role.dart';
 
 class UserModel {
   const UserModel({

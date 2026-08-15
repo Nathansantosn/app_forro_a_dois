@@ -1,4 +1,4 @@
-import 'package:appforro/modules/login/model/user_role.dart';
+import 'package:appforro/modules/register/model/user_role.dart';
 import 'package:appforro/modules/register/controller/register_controller.dart';
 import 'package:appforro/modules/register/controller/repository/register_repository_imp.dart';
 import 'package:appforro/shared/theme/applogo.dart';

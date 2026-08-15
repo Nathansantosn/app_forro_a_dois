@@ -1,7 +1,7 @@
 import 'package:appforro/core/routes/approutes.dart';
 import 'package:appforro/modules/approval/view/approval_page.dart';
-import 'package:appforro/modules/login/model/user_model.dart';
-import 'package:appforro/modules/login/model/user_role.dart';
+import 'package:appforro/modules/register/model/user_model.dart';
+import 'package:appforro/modules/register/model/user_role.dart';
 import 'package:appforro/shared/theme/app_text_styles.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/carousel_item.dart';
@@ -55,6 +55,7 @@ class HomePege extends StatelessWidget {
                 child: Column(
                   children: [
                     Text("Bem-vindo", style: AppTextStyles.title(fontSize: 35)),
+
                     const SizedBox(height: 40),
                     Container(
                       height: 220,

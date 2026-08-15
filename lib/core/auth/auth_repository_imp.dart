@@ -1,6 +1,6 @@
 import 'package:appforro/core/auth/auth_repository.dart';
 
-import 'package:appforro/modules/login/model/user_model.dart';
+import 'package:appforro/modules/register/model/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepository implements IAuthRepository {
