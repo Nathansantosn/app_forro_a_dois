@@ -1,5 +1,5 @@
 import 'package:appforro/core/routes/approutes.dart';
-import 'package:appforro/modules/reset/view/reset_password_page.dart';
+import 'package:appforro/modules/reset_password/view/reset_password_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

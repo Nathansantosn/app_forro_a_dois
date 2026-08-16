@@ -1,4 +1,4 @@
-import 'package:appforro/modules/login/controller/repository/i_forgor_passworda_repository.dart';
+import 'package:appforro/modules/reset_password/controller/repository/i_forgor_password_repository.dart';
 import 'package:appforro/modules/login/exeption/login_forgotpassword.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

@@ -1,6 +1,6 @@
-import 'package:appforro/modules/approval/controller/approval_controller.dart';
-import 'package:appforro/modules/approval/controller/repository/approval_repository_imp.dart';
-import 'package:appforro/modules/approval/model/pending_user_model.dart';
+import 'package:appforro/modules/approval_user/controller/approval_controller.dart';
+import 'package:appforro/modules/approval_user/controller/repository/approval_repository_imp.dart';
+import 'package:appforro/modules/approval_user/model/pending_user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

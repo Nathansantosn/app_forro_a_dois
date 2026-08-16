@@ -1,4 +1,4 @@
-import 'package:appforro/modules/reset/controller/repository/i_reset_password_repository.dart';
+import 'package:appforro/modules/reset_password/controller/repository/i_reset_password_repository.dart';
 import 'package:appforro/modules/login/exeption/login_forgotpassword.dart';
 import 'package:flutter/foundation.dart';
 

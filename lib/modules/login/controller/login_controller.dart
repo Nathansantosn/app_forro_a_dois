@@ -43,6 +43,21 @@ class LoginController {
     }
   }
 
+  /// Usado pela Splash: tenta restaurar uma sessão já salva localmente.
+  /// Retorna o usuário se a sessão for válida E o status ainda for 'active'.
+  /// Retorna null (e preenche errorMessage se houver algo a avisar) caso
+  /// contrário — sem sessão, matrícula pendente, ou cancelada.
+  Future<UserModel?> restoreSession() async {
+    try {
+      final user = await _loginRepository.restoreSession();
+      _currentUser = user;
+      return user;
+    } catch (e) {
+      errorMessage.value = _mapearErro(e);
+      return null;
+    }
+  }
+
   String _mapearErro(Object e) {
     if (e is PendingEnrollmentException) {
       return e.message;
@@ -56,7 +71,6 @@ class LoginController {
       }
       return e.message;
     }
-    print('Erro (${e.runtimeType}): $e');
     return 'Erro (${e.runtimeType}): $e';
   }
 

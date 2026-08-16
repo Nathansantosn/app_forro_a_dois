@@ -1,11 +1,12 @@
 import 'package:appforro/core/routes/approutes.dart';
-import 'package:appforro/modules/approval/view/approval_page.dart';
+import 'package:appforro/modules/approval_user/view/approval_page.dart';
 import 'package:appforro/modules/register/model/user_model.dart';
 import 'package:appforro/modules/register/model/user_role.dart';
 import 'package:appforro/shared/theme/app_text_styles.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/carousel_item.dart';
 import 'package:appforro/shared/widgets/custon_button.dart';
+import 'package:appforro/util/app_drawer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,7 @@ class HomePege extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Color(0xFFFF5C00),
+      drawer: AppDrawer(currentUser: currentUser),
       appBar: AppBar(
         backgroundColor: Color(0xFFFF5C00),
         centerTitle: true,
@@ -55,7 +57,6 @@ class HomePege extends StatelessWidget {
                 child: Column(
                   children: [
                     Text("Bem-vindo", style: AppTextStyles.title(fontSize: 35)),
-
                     const SizedBox(height: 40),
                     Container(
                       height: 220,
@@ -84,7 +85,7 @@ class HomePege extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(
                           context,
-                        ).pushNamed(AppRoutes.graduationHearing);
+                        ).pushNamed(AppRoutes.graduationDanceDriven);
                       },
                       color: Color(0xFFFF5C00),
                     ),
@@ -99,7 +100,7 @@ class HomePege extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(
                           context,
-                        ).pushNamed(AppRoutes.graduationDanceDriven);
+                        ).pushNamed(AppRoutes.graduationHearing);
                       },
                       color: Color(0xFFFFFFFF),
                     ),
@@ -112,9 +113,7 @@ class HomePege extends StatelessWidget {
                       text: 'Teoria',
                       textColor: Color(0xFFFF5C00),
                       onPressed: () {
-                        Navigator.of(
-                          context,
-                        ).pushNamed(AppRoutes.graduationHearing);
+                        Navigator.of(context).pushNamed(AppRoutes.theoryPage);
                       },
                       color: Color(0xFF000000),
                     ),

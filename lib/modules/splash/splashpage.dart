@@ -1,8 +1,11 @@
 import 'package:appforro/modules/home/view/homepage.dart';
+import 'package:appforro/modules/login/controller/login_controller.dart';
+import 'package:appforro/modules/login/controller/repository/login_repository.dart';
 import 'package:appforro/modules/login/view/loginpage.dart';
 import 'package:appforro/shared/theme/app_text_styles.dart';
 import 'package:appforro/core/routes/route_transitions.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -17,9 +20,15 @@ class _SplashPageState extends State<SplashPage>
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
 
+  late final LoginController _loginController;
+
   @override
   void initState() {
     super.initState();
+
+    _loginController = LoginController(
+      LoginRepository(Supabase.instance.client),
+    );
 
     _controller = AnimationController(
       vsync: this,
@@ -34,13 +43,34 @@ class _SplashPageState extends State<SplashPage>
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
     _controller.forward();
 
-    Future.delayed(const Duration(seconds: 4)).then(
-      (_) => Navigator.of(context).pushReplacement(
+    Future.delayed(const Duration(seconds: 4)).then((_) => _decidirDestino());
+  }
+
+  Future<void> _decidirDestino() async {
+    final usuario = await _loginController.restoreSession();
+
+    if (!mounted) return;
+
+    if (usuario != null) {
+      // Sessão salva e matrícula ativa: entra direto na Home.
+      Navigator.of(context).pushReplacement(
         sliderRouteTransition(
-          const Loginpage(),
-          duration: Duration(milliseconds: 2000),
-          beginPosition: Offset(0, 1),
+          HomePege(currentUser: usuario),
+          duration: const Duration(milliseconds: 2000),
+          beginPosition: const Offset(0, 1),
         ),
+      );
+      return;
+    }
+
+    // Sem sessão salva, ou matrícula pending/cancelled: vai pro Login.
+    // Se houver uma mensagem específica (ex: "cadastro em análise"),
+    // ela é exibida assim que a tela de Login abrir.
+    Navigator.of(context).pushReplacement(
+      sliderRouteTransition(
+        Loginpage(initialMessage: _loginController.errorMessage.value),
+        duration: const Duration(milliseconds: 2000),
+        beginPosition: const Offset(0, 1),
       ),
     );
   }
@@ -48,6 +78,7 @@ class _SplashPageState extends State<SplashPage>
   @override
   void dispose() {
     _controller.dispose();
+    _loginController.dispose();
     super.dispose();
   }
 

@@ -1,6 +1,6 @@
 import 'package:appforro/modules/home/view/homepage.dart';
-import 'package:appforro/modules/reset/controller/reset_password_controller.dart';
-import 'package:appforro/modules/reset/controller/repository/reset_password_repository_imp.dart';
+import 'package:appforro/modules/reset_password/controller/reset_password_controller.dart';
+import 'package:appforro/modules/reset_password/controller/repository/reset_password_repository_imp.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/custon_button.dart';
 import 'package:appforro/shared/widgets/custoninput.dart';

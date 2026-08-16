@@ -1,9 +1,8 @@
 import 'package:appforro/modules/home/view/homepage.dart';
 import 'package:appforro/modules/login/controller/login_controller.dart';
 import 'package:appforro/modules/login/controller/repository/login_repository.dart';
-import 'package:appforro/modules/login/view/forgot_password_page.dart';
-import 'package:appforro/modules/reset/view/reset_password_page.dart';
 import 'package:appforro/modules/register/view/register_page.dart';
+import 'package:appforro/modules/reset_password/view/forgot_password_page.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/custon_button.dart';
 import 'package:appforro/shared/widgets/custonbuttontext.dart';
@@ -14,7 +13,12 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Loginpage extends StatefulWidget {
-  const Loginpage({super.key});
+  const Loginpage({super.key, this.initialMessage});
+
+  /// Mensagem opcional exibida assim que a tela abre — usada pela Splash
+  /// pra avisar, por exemplo, que a matrícula está pendente ou foi
+  /// cancelada quando ela tenta restaurar uma sessão salva.
+  final String? initialMessage;
 
   @override
   State<Loginpage> createState() => _LoginpageState();
@@ -29,6 +33,15 @@ class _LoginpageState extends State<Loginpage> {
   void initState() {
     super.initState();
     _controller = LoginController(LoginRepository(Supabase.instance.client));
+
+    if (widget.initialMessage != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(widget.initialMessage!)));
+      });
+    }
   }
 
   @override

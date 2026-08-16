@@ -1,5 +1,5 @@
 import 'package:appforro/modules/login/controller/forgot_password_controller.dart';
-import 'package:appforro/modules/login/controller/repository/forgot_password_repository.dart';
+import 'package:appforro/modules/reset_password/controller/repository/forgot_password_repository.dart';
 import 'package:appforro/shared/theme/applogo.dart';
 import 'package:appforro/shared/widgets/custon_button.dart';
 import 'package:appforro/shared/widgets/custoninput.dart';

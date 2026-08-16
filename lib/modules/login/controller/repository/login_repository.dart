@@ -28,8 +28,23 @@ class LoginRepository implements ILoginRepository {
       );
     }
 
-    // Busca o perfil sem filtrar por status ainda, pra sabermos
-    // diferenciar "não existe" (deletado/cancelado) de "existe mas pendente".
+    return _fetchAndValidateProfile(userId);
+  }
+
+  @override
+  Future<UserModel?> restoreSession() async {
+    final userId = _client.auth.currentSession?.user.id;
+    if (userId == null) return null;
+
+    // Se a validação falhar (pending/cancelled/deletado), a exceção já
+    // faz signOut() dentro de _fetchAndValidateProfile — repassamos pra
+    // quem chamou decidir o que mostrar.
+    return _fetchAndValidateProfile(userId);
+  }
+
+  /// Busca o perfil correspondente ao usuário autenticado e valida o
+  /// status. Lança exception + faz signOut() se não estiver ativo.
+  Future<UserModel> _fetchAndValidateProfile(String userId) async {
     final profileMap = await _client
         .from(_table)
         .select()
@@ -37,7 +52,6 @@ class LoginRepository implements ILoginRepository {
         .maybeSingle();
 
     if (profileMap == null) {
-      // Registro não existe mais (deletado do banco).
       await _client.auth.signOut();
       throw const EnrollmentCancelledException();
     }
